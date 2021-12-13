@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="3" parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="com.Vtiger.genericUtil.ListenersImplimentations"/>
+  </listeners>
+  <test thread-count="3" parallel="tests" name="TestRunner2(failed)">
+    <classes>
+      <class name="com.VTiger.Organization.TC001_CreateOrganizationTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="CreateOrg"/>
+          <include name="teardown"/>
+          <include name="LaunchBrowser_URL"/>
+          <include name="createorgwithphonenumber"/>
+          <include name="disconnectfromDB"/>
+          <include name="logoutfromApp"/>
+          <include name="logintoApp"/>
+        </methods>
+      </class> <!-- com.VTiger.Organization.TC001_CreateOrganizationTest -->
+    </classes>
+  </test> <!-- TestRunner2(failed) -->
+  <test thread-count="3" parallel="tests" name="TestRunner1(failed)">
+    <classes>
+      <class name="com.VTiger.Organization.TC002_CreateOrganizationTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="teardown"/>
+          <include name="LaunchBrowser_URL"/>
+          <include name="CreateOrg"/>
+          <include name="disconnectfromDB"/>
+          <include name="logoutfromApp"/>
+          <include name="logintoApp"/>
+        </methods>
+      </class> <!-- com.VTiger.Organization.TC002_CreateOrganizationTest -->
+    </classes>
+  </test> <!-- TestRunner1(failed) -->
+</suite> <!-- Failed suite [Suite] -->
