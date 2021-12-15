@@ -22,7 +22,7 @@ public class TC001_CreateOrganizationTest extends BaseClass
 		{
 			
 			HomePage hp=new HomePage(driver);
-			hp.getorglink().click();
+			hp.getOrglink().click();
 		
 			OrgInfoPage orginfo=new OrgInfoPage(driver);
 			orginfo.getcreateorgimg().click();
@@ -35,7 +35,7 @@ public class TC001_CreateOrganizationTest extends BaseClass
 			co.getsavebtn().click();
 			
 			driver.navigate().refresh();
-			 hp.getorglink().click();
+			 hp.getOrglink().click();
 			 
 			
 			 oip.searchfororg(orgname, "Organization Name");
@@ -48,13 +48,32 @@ public class TC001_CreateOrganizationTest extends BaseClass
 
 			
 		
-		@Test(retryAnalyzer=com.Vtiger.genericUtil.RetryAnalyzer.class)
+		@Test(groups="RegressionTest",retryAnalyzer=com.Vtiger.genericUtil.RetryAnalyzer.class)
 		
 		public void createorgwithphonenumber() throws InterruptedException
 		{
-			String orgname=JavaUtil.ObjectforJavaUtil().getFirstName()+JavaUtil.ObjectforJavaUtil();
-			String phoneno=JavaUtil.ObjectforJavaUtil().getphonnumber()+JavaUtil.ObjectforJavaUtil();
 			
+			HomePage hp=new HomePage(driver);
+			hp.getOrglink().click();
+		
+			OrgInfoPage orginfo=new OrgInfoPage(driver);
+			orginfo.getcreateorgimg().click();
+			
+			String orgname=JavaUtil.ObjectforJavaUtil().getFirstName()+JavaUtil.ObjectforJavaUtil().generateRandomNumber();
+			
+			CreateOrganization co=new CreateOrganization(driver);
+			
+			OrgInfoPage oip=new OrgInfoPage(driver);
+			oip.getOrgname().sendKeys(orgname);
+			
+			
+			String phoneno=JavaUtil.ObjectforJavaUtil().getphonnumber();
+			co.getPhoneNo().sendKeys(phoneno);
+			
+			co.getsavebtn().click();
+			
+			driver.navigate().refresh();
+			 hp.getOrglink().click();
 		 
 		//verification
 		
@@ -67,8 +86,8 @@ public class TC001_CreateOrganizationTest extends BaseClass
 		 {
 			 System.out.println("fail");
 		 }
-		 HomePage hp=new HomePage(driver);
-		    hp.signoutfromapp();
+		
+		    hp.getSignoutlink();
 		    Thread.sleep(5000);
 		    driver.close();
 

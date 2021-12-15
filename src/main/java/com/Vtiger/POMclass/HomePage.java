@@ -23,16 +23,22 @@ public class HomePage   //rule1 login
 	@FindBy(xpath="//a[text()='Sign Out']") //rule2
 	private WebElement signoutlink;      //rule3
 	
-	public WebElement getorglink()        //rule4
-	{
-		return orglink; 
-	}
 	
-	public WebElement getcontactslink()   //rule4
-	{
-		return contactslink; 
+	public WebDriver getDriver() {
+		return driver;
 	}
-	
+	public WebElement getOrglink() {
+		return orglink;
+	}
+	public WebElement getContactslink() {
+		return contactslink;
+	}
+	public WebElement getSignoutimg() {
+		return signoutimg;
+	}
+	public WebElement getSignoutlink() {
+		return signoutlink;
+	}
 	public  HomePage (WebDriver driver)   //rule5
 	{
 		this.driver=driver;

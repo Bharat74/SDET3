@@ -31,7 +31,7 @@ public class TC002_CreateOrganizationTest extends BaseClass
 	public void CreateOrg() throws Throwable, IOException
 	{
 		HomePage hp=new HomePage(driver);
-		hp.getorglink().click();
+		hp.getOrglink().click();
 		
 		OrgInfoPage orginfo=new OrgInfoPage(driver);
 		orginfo.getcreateorgimg();

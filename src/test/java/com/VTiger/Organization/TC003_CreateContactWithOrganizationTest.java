@@ -17,69 +17,51 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.Vtiger.POMclass.ContactInfo;
+import com.Vtiger.POMclass.HomePage;
 import com.Vtiger.POMclass.createContact;
 import com.Vtiger.genericUtil.BaseClass;
 import com.Vtiger.genericUtil.ExcelUtil;
 import com.Vtiger.genericUtil.JavaUtil;
 
-public class TC003_CreateContactWithOrganizationTest extends BaseClass
-{
-	@Test(groups="smokeTest",retryAnalyzer=com.Vtiger.genericUtil.RetryAnalyzer.class)
-	public void CreateContactsmoke(ExcelUtil ex) throws Throwable, IOException
-	{
-		String lname=JavaUtil.ObjectforJavaUtil().getLastName();
-		ExcelUtil.objectofExcelUtil();
-		createContact cc=new createContact(driver);
-		cc.createContact(lname);
-		ContactInfo cp=new ContactInfo(driver);
-		cp.searchforContact(lname, ex.readExcelData("shet2",0,1));
+public class TC003_CreateContactWithOrganizationTest extends BaseClass {
+	@Test(groups = "smokeTest", retryAnalyzer = com.Vtiger.genericUtil.RetryAnalyzer.class)
+	public void CreateContactsmoke(ExcelUtil ex) throws Throwable, IOException {
+
+		HomePage hp = new HomePage(driver);
+		hp.getOrglink().click();
+		ContactInfo coi = new ContactInfo(driver);
+		coi.getsearchforContact().click();
+
+		createContact cc = new createContact(driver);
+		cc.getcreateimg().click();
 		
-		WebElement add=driver.findElement(By.xpath("//a[text()='Contacts' and text()='"+lname+"']"));
+
+		String lname = JavaUtil.ObjectforJavaUtil().getLastName();
+		ExcelUtil.objectofExcelUtil();
+		createContact cc1 = new createContact(driver);
+		cc1.createContact(lname);
+		ContactInfo cp = new ContactInfo(driver);
+		cp.searchforContact(lname, ex.readExcelData("shet2", 0, 1));
+
+		WebElement add = driver.findElement(By.xpath("//a[text()='Contacts' and text()='" + lname + "']"));
 		Assert.assertEquals(add.getText(), lname);
 		System.out.println("TC003 is pass");
-		
-		
-}
-	@Test (groups="RegressionTest",retryAnalyzer=com.Vtiger.genericUtil.RetryAnalyzer.class)
-	 public void CreateContactwithorg()
-	 {
-		String fname=JavaUtil.ObjectforJavaUtil().getFirstName();
-		String lname=JavaUtil.ObjectforJavaUtil().getLastName();
-		ExcelUtil ex=ExcelUtil.objectofExcelUtil();      
-		
-		createContact cc= new createContact(driver);
-		cc.createContact(lname);
-		
-	 }
-}
-	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//public static WebDriver driver;
+	}
+
+	@Test(groups = "RegressionTest", retryAnalyzer = com.Vtiger.genericUtil.RetryAnalyzer.class)
+	public void CreateContactwithorg() {
+		String fname = JavaUtil.ObjectforJavaUtil().getFirstName();
+		String lname = JavaUtil.ObjectforJavaUtil().getLastName();
+		ExcelUtil ex = ExcelUtil.objectofExcelUtil();
+
+		createContact cc = new createContact(driver);
+		cc.createContact(lname);
+
+	}
+}
+
+// public static WebDriver driver;
 
 //	public static void main(String[] args) throws InterruptedException, IOException {
 //		
@@ -103,7 +85,7 @@ public class TC003_CreateContactWithOrganizationTest extends BaseClass
 //		driver.manage().window().maximize();
 //		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 //		
-		//login
+// login
 //		driver.findElement(By.name("user_name")).sendKeys("admin");
 //		driver.findElement(By.name("user_password")).sendKeys("12345");
 //		driver.findElement(By.id("submitButton")).click();
@@ -111,5 +93,3 @@ public class TC003_CreateContactWithOrganizationTest extends BaseClass
 //		//create contact
 //		driver.findElement(By.xpath("//a[text()='Contacts']")).click();
 //		driver.findElement(By.xpath("//img[@title='Create Contact...']")).click();
-		
-	
