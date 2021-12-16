@@ -37,18 +37,23 @@ public class TC002_CreateOrganizationTest extends BaseClass
 		orginfo.getcreateorgimg().click();;
 	
 		String orgname=JavaUtil.ObjectforJavaUtil().getFirstName()+JavaUtil.ObjectforJavaUtil().generateRandomNumber();
-		ExcelUtil ex=ExcelUtil.objectofExcelUtil();
-		
+
 		CreateOrganization cop=new CreateOrganization(driver);
-		cop.createorgnameWithDD(orgname, ex.readExcelData("Sheet1", 5, 0), ex.readExcelData("Sheet1", 1, 1), ex.readExcelData("Sheet1", 2, 3));
-		Thread.sleep(3000);
 		
-		OrgInfoPage orgp=new OrgInfoPage(driver);
-	orgp.searchfororg(orgname, ExcelUtil.objectofExcelUtil().readExcelData(orgname, 0, 0));
-	
-	 WebElement add = driver.findElement(By.xpath("//a[@title='Organizations' and text()='"+orgname+"']")); 
-		Assert.assertEquals(add.getText(), orgname);
-		System.out.println("TC002 is pass");
+		
+		
+		//		ExcelUtil ex=ExcelUtil.objectofExcelUtil();
+//		
+//		CreateOrganization cop=new CreateOrganization(driver);
+//		cop.createorgnameWithDD(orgname, ex.readExcelData("Sheet1", 5, 0), ex.readExcelData("Sheet1", 1, 1), ex.readExcelData("Sheet1", 2, 3));
+//		Thread.sleep(3000);
+//		
+//		OrgInfoPage orgp=new OrgInfoPage(driver);
+//	orgp.searchfororg(orgname, ExcelUtil.objectofExcelUtil().readExcelData(orgname, 0, 0));
+//	
+//	 WebElement add = driver.findElement(By.xpath("//a[@title='Organizations' and text()='"+orgname+"']")); 
+//		Assert.assertEquals(add.getText(), orgname);
+//		System.out.println("TC002 is pass");
 	}
 }
 
