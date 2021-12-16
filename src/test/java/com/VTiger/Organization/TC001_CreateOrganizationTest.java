@@ -36,13 +36,13 @@ public class TC001_CreateOrganizationTest extends BaseClass
 			
 			driver.navigate().refresh();
 			 hp.getOrglink().click();
-			 
 			
-			 oip.searchfororg(orgname, "Organization Name");
 		
 		//validation
-			
-		 WebElement add = driver.findElement(By.xpath("//a[@title='Organizations' and text()='"+orgname+"']")); 
+			 oip.searchfororg(orgname, "Organization Name");
+			 
+		 WebElement add = driver.findElement(By.xpath("//a[@title='Organizations' and text()='"+orgname+"']"));
+		 
 			Assert.assertEquals(add.getText(), orgname);
 		}
 
@@ -77,19 +77,16 @@ public class TC001_CreateOrganizationTest extends BaseClass
 		 
 		//verification
 		
-		WebElement add = driver.findElement(By.xpath("//a[@title='Organizations' and text()='"+orgname+"']")); 
-		 if(add.getText().equalsIgnoreCase(orgname))
-		 {
-				System.out.println("pass");
-		 }
-		 else
-		 {
-			 System.out.println("fail");
-		 }
-		
-		    hp.getSignoutlink();
-		    Thread.sleep(5000);
-		    driver.close();
+			 orginfo.searchfororg(phoneno, "Phone");
+
+				WebElement orgname1=null;
+				orgname1	=driver.findElement(By.xpath("//a[text()='"+orgname1+"' and @title='Organizations']"));
+				System.out.println(orgname1.isDisplayed());
+
+				String actual=orgname1.getText();
+
+				Assert.assertEquals(orgname1, actual);
+				hp.getSignoutlink();
 
         }
 }

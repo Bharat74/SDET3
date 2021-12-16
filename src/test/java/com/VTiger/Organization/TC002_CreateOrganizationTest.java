@@ -34,7 +34,7 @@ public class TC002_CreateOrganizationTest extends BaseClass
 		hp.getOrglink().click();
 		
 		OrgInfoPage orginfo=new OrgInfoPage(driver);
-		orginfo.getcreateorgimg();
+		orginfo.getcreateorgimg().click();;
 	
 		String orgname=JavaUtil.ObjectforJavaUtil().getFirstName()+JavaUtil.ObjectforJavaUtil().generateRandomNumber();
 		ExcelUtil ex=ExcelUtil.objectofExcelUtil();

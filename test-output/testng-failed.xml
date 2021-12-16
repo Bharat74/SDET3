@@ -3,17 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.VTiger.Organization.TC002_CreateOrganizationTest">
+      <class name="com.VTiger.Organization.TC001_CreateOrganizationTest">
         <methods>
           <include name="setUp"/>
           <include name="teardown"/>
           <include name="LaunchBrowser_URL"/>
-          <include name="CreateOrg"/>
+          <include name="createorgwithphonenumber"/>
           <include name="disconnectfromDB"/>
           <include name="logoutfromApp"/>
           <include name="logintoApp"/>
         </methods>
-      </class> <!-- com.VTiger.Organization.TC002_CreateOrganizationTest -->
+      </class> <!-- com.VTiger.Organization.TC001_CreateOrganizationTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

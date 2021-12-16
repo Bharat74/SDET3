@@ -67,7 +67,8 @@ public class BaseClass
 		public void logoutfromApp() throws InterruptedException
 		{
 			HomePage hp=new HomePage(driver);
-		    hp.signoutfromapp();
+			hp.signoutfromapp();
+		    // hp.signoutfromapp();
 		}
 		@AfterClass(groups= {"smokeTest","RegressionTest"})
 		public void teardown() throws InterruptedException
