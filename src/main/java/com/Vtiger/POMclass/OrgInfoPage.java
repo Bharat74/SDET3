@@ -57,11 +57,11 @@ public OrgInfoPage(WebDriver driver)   //rule5
 	this.driver=driver;
 	PageFactory.initElements(driver, this);
 }
-public void searchfororg(String orgnamesearchfor,String text) //rule6
+public void searchfororg(String orgname1,String text) //rule6
 {
-	searchfororgtxtfld.sendKeys( orgnamesearchfor);
+	searchfororgtxtfld.sendKeys( orgname1);
 	WebDriverUtil Webutil=new WebDriverUtil(driver);
-	Webutil.selectvaluefromDD(text,searchforDD);
+	Webutil.selectvaluefromDD(text, getsearchforDD());
 	searchnowbtn.click();
 	
 }

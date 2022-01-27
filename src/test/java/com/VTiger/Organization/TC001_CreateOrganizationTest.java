@@ -2,6 +2,7 @@ package com.VTiger.Organization;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -17,7 +18,7 @@ public class TC001_CreateOrganizationTest extends BaseClass
 {
 	
 	
-		@Test(groups="smokeTest",retryAnalyzer=com.Vtiger.genericUtil.RetryAnalyzer.class)
+		@Test(groups="smokeTesting",retryAnalyzer=com.Vtiger.genericUtil.RetryAnalyzer.class)
 		public void CreateOrg() throws Throwable
 		{
 			
@@ -48,7 +49,7 @@ public class TC001_CreateOrganizationTest extends BaseClass
 
 			
 		
-		@Test(groups="RegressionTest",retryAnalyzer=com.Vtiger.genericUtil.RetryAnalyzer.class)
+		@Test(groups="RegressionTesting",retryAnalyzer=com.Vtiger.genericUtil.RetryAnalyzer.class)
 		
 		public void createorgwithphonenumber() throws InterruptedException
 		{
@@ -86,7 +87,12 @@ public class TC001_CreateOrganizationTest extends BaseClass
 				String actual=orgname1.getText();
 
 				Assert.assertEquals(orgname1, actual);
-				hp.getSignoutlink();
+
+				WebElement ele=driver.findElement(By.xpath("//img[@src='themes/softed/images/user.PNG']"));
+				Actions act=new Actions(driver);
+				act.moveToElement(ele).build().perform();
+				driver.findElement(By.xpath("//a[text()='Sign Out']")).click();
+				 
 
         }
 }

@@ -27,18 +27,43 @@ import com.Vtiger.genericUtil.WebDriverUtil;
 
 public class TC002_CreateOrganizationTest extends BaseClass
 {
-	@Test(retryAnalyzer=com.Vtiger.genericUtil.RetryAnalyzer.class)
+	@Test
+	//(retryAnalyzer=com.Vtiger.genericUtil.RetryAnalyzer.class)
 	public void CreateOrg() throws Throwable, IOException
 	{
 		HomePage hp=new HomePage(driver);
 		hp.getOrglink().click();
-		
+		String orgname1=JavaUtil.ObjectforJavaUtil().getFirstName()+JavaUtil.ObjectforJavaUtil().generateRandomNumber();
 		OrgInfoPage orginfo=new OrgInfoPage(driver);
-		orginfo.getcreateorgimg().click();;
+		
+		orginfo.getcreateorgimg().click();
 	
-		String orgname=JavaUtil.ObjectforJavaUtil().getFirstName()+JavaUtil.ObjectforJavaUtil().generateRandomNumber();
-
+		
 		CreateOrganization cop=new CreateOrganization(driver);
+		cop.d(orgname1, "Construction", "Active", "Customer");
+		cop.getsavebtn();
+		
+		
+		Thread.sleep(3000);
+	//	driver.navigate().refresh();
+		//orginfo.getcreateorgimg().click();
+		hp.getOrglink().click();
+
+		orginfo.searchfororg(orgname1, "Organization Name");
+		WebElement ele=driver.findElement(By.xpath("//img[@src='themes/softed/images/user.PNG']"));
+		Actions act=new Actions(driver);
+		act.moveToElement(ele).build().perform();
+		driver.findElement(By.xpath("//a[text()='Sign Out']")).click();
+		 
+
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		

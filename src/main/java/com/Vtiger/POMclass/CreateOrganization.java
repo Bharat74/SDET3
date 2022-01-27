@@ -11,7 +11,7 @@ public class CreateOrganization {
 
 	WebDriver driver;
 	
-	@FindBy(xpath="//a[text()='Organizations']")
+	@FindBy(name="accountname")
 	private WebElement orgname;
 	
 	@FindBy (name="industry")
@@ -57,21 +57,27 @@ public class CreateOrganization {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
-	
-	public void createOrgWithContact(String name,String phone)
+
+	public void createOrgWithContact(String orgname1)
 	{
-		orgname.sendKeys(name);
-		phoneNo.sendKeys(phone);
-		savebtn.click();
+		orgname.sendKeys(orgname1);
 	}
 	
-	public void createorgnameWithDD(String orgnamesave, String Itext, String Rtext, String Ttext)
+	
+//	public void createOrgWithContact(String name,String phone)
+//	{
+//		orgname.sendKeys(name);
+//		phoneNo.sendKeys(phone);
+//		savebtn.click();
+//	}
+	
+	public void d(String orgname1, String industry, String rating, String type)
 	{
-		orgname.sendKeys(orgnamesave);
+		orgname.sendKeys(orgname1);
 		WebDriverUtil Webutil=new WebDriverUtil(driver);
-		Webutil.selectvaluefromDD(Itext,industryDD);
-		Webutil.selectvaluefromDD(Rtext,ratingDD);
-		Webutil.selectvaluefromDD(Ttext,typeDD);
+		Webutil.selectvaluefromDD(industry,getindustryDD());
+		Webutil.selectvaluefromDD(rating,getratingDD());
+		Webutil.selectvaluefromDD(type,gettypeDD());
 		savebtn.click();
 	}
 	

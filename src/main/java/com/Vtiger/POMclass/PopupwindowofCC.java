@@ -11,6 +11,13 @@ public class PopupwindowofCC {
 	
 	WebDriver driver;
 	
+	@FindBy (xpath="//a[@id='1']")
+	private WebElement selectorg;
+	
+	public WebElement getSelectorg() {
+		return selectorg;
+	}
+
 	@FindBy(name="search_text")
 	private WebElement searchorgname;
 	

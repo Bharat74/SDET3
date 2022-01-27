@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -19,20 +20,30 @@ import org.testng.annotations.BeforeSuite;
 
 import com.Vtiger.POMclass.HomePage;
 import com.Vtiger.POMclass.LoginPage;
+import com.beust.jcommander.Parameter;
 
 public class BaseClass
 {
 	public WebDriver driver;
 	public LoginPage lp;
 	public static WebDriver sdriver;
+
 	@BeforeSuite(groups= {"smokeTesting","RegressionTesting"})
 	public void setUp()
 	{
+	
 		System.out.println("Connect to DB");
 	}
+	
+	//@Parameter("BROWSER")
+	
 	@BeforeClass(groups= {"smokeTesting","RegressionTesting"})
 	public void LaunchBrowser_URL() throws IOException
 	{
+//		String browser=System.getProperty("BROWSER");
+//		System.out.println("browser");
+//		
+		
 		String Browser=FileUtil.objectofFlieUtil().readdatfrompropfile("browser");
 		if(Browser.equalsIgnoreCase("firefox"))
 		{
@@ -47,7 +58,10 @@ public class BaseClass
 			driver=new ChromeDriver();
 		}
 		
+		sdriver=driver;
+		
 		driver.get(FileUtil.objectofFlieUtil().readdatfrompropfile("url"));
+		
 		
 		//maximize & impwait
 		WebDriverUtil Webutil=new WebDriverUtil(driver);
@@ -79,15 +93,17 @@ public class BaseClass
 		@AfterSuite(groups= {"smokeTesting","RegressionTesting"})
 		public void disconnectfromDB()
 		{
+		
 			System.out.println("Disconnect from DB");
 		}
 		
-		public static void takescreenshot(String name) throws IOException
+		public static String takescreenshot(String name) throws IOException
 		{
 			File srcfile=((TakesScreenshot)sdriver).getScreenshotAs(OutputType.FILE);
 			String destfile=System.getProperty("user.dir")+"/screenshot/"+name+".png";
 			File finaldest=new File(destfile);
 			FileUtils.copyFile(srcfile, finaldest);
+			return destfile;
 			
 		}
 }

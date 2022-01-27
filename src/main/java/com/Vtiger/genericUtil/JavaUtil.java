@@ -1,12 +1,13 @@
 package com.Vtiger.genericUtil;
 
+import java.util.Date;
 import java.util.Random;
 
 import com.github.javafaker.Faker;
 
 public class JavaUtil {
 	
-	private  JavaUtil() {
+	public  JavaUtil() {
 		
 	}
 public static  JavaUtil ObjectforJavaUtil()
@@ -58,5 +59,18 @@ public String getphonnumber()
 {
 	Faker faker=new Faker();
 	return faker.phoneNumber().cellPhone();
+}
+   public void getcurrentdate()
+  {
+	Date d1=new Date();
+	String todaysdate=d1.toString();
+	String [] arr=todaysdate.split(" ");
+	
+	String day =arr [0];
+	String date =arr [1];
+	String month =arr [2];
+	String year =arr [5];
+	String currentdate=day+" "+date+" "+month+" "+year;
+
 }
 }
